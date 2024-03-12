@@ -60,15 +60,15 @@ fn get_date_time(file_path: &Path) -> String {
     let exif_time_offset = get_exif_field(&exif, Tag::OffsetTimeOriginal);
 
     let offset = parse_offset(&exif_time_offset);
-    parse_date_time(&format!("{} {}", exif_date_time, offset))
+    parse_date_time(&exif_date_time, offset)
 }
 
 fn parse_offset(offset_str: &str) -> &str {
     offset_str.trim_matches(|c| c == '"')
 }
 
-fn parse_date_time(date_time_str: &str) -> String {
-    DateTime::parse_from_str(&date_time_str, "%F %T %:z")
+fn parse_date_time(date_time_str: &str, offset: &str) -> String {
+    DateTime::parse_from_str(&format!("{} {}", date_time_str, offset), "%F %T %:z")
         .unwrap()
         .to_utc()
         .format("%Y%m%d%H%M%S")
