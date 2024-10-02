@@ -1,9 +1,4 @@
-# Sort images from different devices by exif metadata
-
-| Argument  | Description                   | Example                    |
-| --------- | ----------------------------- | -------------------------- |
-| --out     | output directory              | sorted-files               |
-| --folders | 1 or more folders with images | phone-images camera-images |
+## Sort images from different devices by exif metadata
 
 To sort all images (files will be copied rather than moved):
 
@@ -16,3 +11,10 @@ This will write all files to `out-dir` and prefix the file name with a timestamp
 - 20240217145540_original-file-name.jpg
 - 20240217148546_rick-astley.jpg
 - ...
+
+## CLI arguments
+
+| Argument  | Description                   | Example                    |
+| --------- | ----------------------------- | -------------------------- |
+| --out     | output directory              | sorted-files               |
+| --folders | 1 or more folders with images | phone-images camera-images |
