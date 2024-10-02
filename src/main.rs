@@ -4,8 +4,18 @@ use std::{
 };
 
 use chrono::DateTime;
+use clap::Parser;
 use exif::{Exif, In, Tag};
 use itertools::Itertools;
+
+#[derive(Parser, Debug)]
+struct Cli {
+    #[arg(long)]
+    out: String,
+
+    #[arg(long, value_parser = clap::value_parser!(PathBuf), num_args = 1..)]
+    folders: Vec<PathBuf>,
+}
 
 struct ImageFile {
     name: String,
@@ -14,12 +24,10 @@ struct ImageFile {
 }
 
 fn main() {
-    let source_dirs = vec![
-        Path::new("/Users/markuswendorf/Documents/santo antao/output/JPEG"),
-        Path::new("/Users/markuswendorf/Documents/santo antao/handy selection"),
-    ];
+    let cli = Cli::parse();
 
-    let dest_dir = "/Users/markuswendorf/Documents/santo antao/test-out";
+    let source_dirs = cli.folders;
+    let dest_dir = cli.out;
 
     let images = source_dirs
         .iter()
