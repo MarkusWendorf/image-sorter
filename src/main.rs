@@ -9,7 +9,7 @@ use exif::{Exif, In, Tag};
 use itertools::Itertools;
 
 #[derive(Parser, Debug)]
-struct Cli {
+struct Args {
     #[arg(long)]
     out: String,
 
@@ -24,10 +24,10 @@ struct ImageFile {
 }
 
 fn main() {
-    let cli = Cli::parse();
+    let args = Args::parse();
 
-    let source_dirs = cli.folders;
-    let dest_dir = cli.out;
+    let source_dirs = args.folders;
+    let dest_dir = args.out;
 
     let images = source_dirs
         .iter()
