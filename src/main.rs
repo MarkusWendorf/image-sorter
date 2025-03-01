@@ -17,6 +17,9 @@ struct Args {
 
     #[arg(long, value_parser = clap::value_parser!(PathBuf), num_args = 1..)]
     folders: Vec<PathBuf>,
+
+    #[arg(long, default_value = "+02:00")]
+    default_offset: String,
 }
 
 struct ImageFile {
@@ -30,11 +33,10 @@ fn main() {
 
     let source_dirs = args.folders;
     let dest_dir = args.out;
+    let default_timezone_offset = args.default_offset;
 
     let data_dir = Path::new(&dest_dir);
     fs::create_dir_all(data_dir).expect("failed to create output directory");
-
-    let default_timezone_offset = "+02:00".to_owned(); // todo: cli arg
 
     let images = source_dirs
         .iter()

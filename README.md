@@ -14,7 +14,8 @@ This will write all files to `out-dir` and prefix the file name with a timestamp
 
 ## CLI arguments
 
-| Argument  | Description                   | Example                    |
-| --------- | ----------------------------- | -------------------------- |
-| --out     | output directory              | sorted-files               |
-| --folders | 1 or more folders with images | phone-images camera-images |
+| Argument         | Description                                                         | Example                    |
+| ---------------- | ------------------------------------------------------------------- | -------------------------- |
+| --out            | output directory                                                    | sorted-files               |
+| --folders        | 1 or more folders with images                                       | phone-images camera-images |
+| --default-offset | default timezone offset for images **without** timezone information | +03:00                     |
